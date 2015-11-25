@@ -1,9 +1,7 @@
 var cheerio = require('cheerio');
 var config = require('./config');
-var jqueryElm = config.jqueryElm;
-var scriptElm = config.scriptElm;
 
-module.exports = function(str,lang){
+module.exports = function(str,lang,inject){
 	$ = cheerio.load(str);
 	var str = config.zhStr;
 	if(lang.toLowerCase()=='en'){
@@ -15,11 +13,11 @@ module.exports = function(str,lang){
 	str = $.html();
 	    // Add or script to the page
 	if( str.indexOf( '</body>' ) > -1 ) {
-	    str = str.replace( '</body>', jqueryElm+scriptElm + '</body>' );
+	    str = str.replace( '</body>', inject + '</body>' );
 	} else if ( str.indexOf( '</html>' ) > -1 ){
-	    str = str.replace( '</html>', jqueryElm+scriptElm + '</html>' );
+	    str = str.replace( '</html>', inject + '</html>' );
 	} else {
-	    str = str + jqueryElm+scriptElm;
+	    str = str + inject;
 	}
 
 	return str;

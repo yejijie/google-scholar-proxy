@@ -2,7 +2,7 @@
   "name": "google-scholar-proxy",
   "version": "1.0.0",
   "description": "proxy google scholar using node-http-proxy",
-  "main": "scholar_proxy.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
